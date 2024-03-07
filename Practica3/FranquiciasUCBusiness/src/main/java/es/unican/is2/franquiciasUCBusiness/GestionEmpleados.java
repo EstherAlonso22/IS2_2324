@@ -41,7 +41,7 @@ public class GestionEmpleados implements IGestionEmpleados {
 			return null;
 		}
 		if (!tienda.getEmpleados().remove(empleado)) {
-			throw new OperacionNoValidaException("El empleado no pertenece a la tienda");
+			throw new OperacionNoValidaException("El empleado no pertenece a esa tienda");
 		}
 		return empleado;
 	}
@@ -56,7 +56,7 @@ public class GestionEmpleados implements IGestionEmpleados {
 			return false;
 		}
 		if (!tiendaActual.getEmpleados().remove(empleado)) {
-			throw new OperacionNoValidaException("El empleado no pertenece a la tienda");
+			throw new OperacionNoValidaException("El empleado no pertenece a esa tienda");
 		}
 		return tiendaDest.getEmpleados().add(empleado);	
 	}

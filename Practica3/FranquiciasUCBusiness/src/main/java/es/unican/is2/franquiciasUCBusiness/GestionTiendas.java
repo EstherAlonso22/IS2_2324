@@ -16,7 +16,6 @@ public class GestionTiendas implements IGestionTiendas {
 		// Busco si hay alguna tienda registrada con el mismo nombre en la interfaz
 		Tienda tiendaBuscada = tienda(t.getNombre());
 		
-		// Si no hay tienda con ese nombre, la creo
 		if (tiendaBuscada != null) {
 			return null;
 		}

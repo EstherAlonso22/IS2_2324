@@ -38,7 +38,7 @@ public class Empleado {
 	public double sueldoBruto() {
 		double sueldo = 0;
 		
-		//calcula el sueldo base dependiendo de la categoria
+		//Calcula el sueldo base dependiendo de la categoria
 		switch (categoria) {
 		case ENCARGADO:
 			sueldo = 2000;
@@ -51,7 +51,7 @@ public class Empleado {
 			break;
 		}
 		
-		//calcula el complemento por antiguedad
+		//Calcula el complemento por antiguedad
 		LocalDate hoy = LocalDate.now();
 		
 		if (fechaContratacion.plusYears(20).isBefore(hoy)) {
@@ -62,6 +62,7 @@ public class Empleado {
 			sueldo += 50;
 		}
 		
+		//Comprueba si esta de baja
 		if (baja) {
 			sueldo = 0.75*sueldo;
 		}
