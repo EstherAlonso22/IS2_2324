@@ -36,8 +36,36 @@ public class Empleado {
 	 * Retorna el sueldo bruto del empleado
 	 */
 	public double sueldoBruto() {
-		// TODO
-		return 0;
+		double sueldo = 0;
+		
+		//calcula el sueldo base dependiendo de la categoria
+		switch (categoria) {
+		case ENCARGADO:
+			sueldo = 2000;
+			break;
+		case VENDEDOR:
+			sueldo = 1500;
+			break;
+		case AUXILIAR:
+			sueldo = 1000;
+			break;
+		}
+		
+		//calcula el complemento por antiguedad
+		LocalDate hoy = LocalDate.now();
+		
+		if (fechaContratacion.plusYears(20).isBefore(hoy)) {
+			sueldo += 200;
+		} else if (fechaContratacion.plusYears(10).isBefore(hoy)) {
+			sueldo += 100;
+		} else if (fechaContratacion.plusYears(5).isBefore(hoy)){
+			sueldo += 50;
+		}
+		
+		if (baja) {
+			sueldo = 0.75*sueldo;
+		}
+		return sueldo;
 	}
 	
 	/** 
