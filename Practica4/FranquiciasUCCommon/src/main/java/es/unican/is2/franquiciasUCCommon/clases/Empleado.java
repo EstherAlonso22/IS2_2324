@@ -13,7 +13,7 @@ public class Empleado {
 	private String nombre;
 	private Categoria categoria;
 	private LocalDate fechaContratacion;
-	private boolean baja = false;
+	private boolean baja;
 	
 	public Empleado() {	}
 	
@@ -30,6 +30,7 @@ public class Empleado {
 		this.DNI=DNI;
 		this.categoria=categoria;
 		this.fechaContratacion=fechaContratacion;
+		this.baja = false;
 	}
 	
 	/**
@@ -55,11 +56,11 @@ public class Empleado {
 		LocalDate hoy = LocalDate.now();
 		
 		if (fechaContratacion.plusYears(20).isBefore(hoy)) {
-			sueldo += 200;
+			sueldo = sueldo + 200;
 		} else if (fechaContratacion.plusYears(10).isBefore(hoy)) {
-			sueldo += 100;
+			sueldo = sueldo + 100;
 		} else if (fechaContratacion.plusYears(5).isBefore(hoy)){
-			sueldo += 50;
+			sueldo = sueldo + 50;
 		}
 		
 		//Comprueba si esta de baja
