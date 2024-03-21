@@ -35,7 +35,14 @@ public class Empleado {
 	 * @param categoria
 	 * @param fechaContratacion
 	 */
-	public Empleado(String DNI, String nombre, Categoria categoria, LocalDate fechaContratacion) {
+	public Empleado(String DNI, String nombre, Categoria categoria, LocalDate fechaContratacion) 
+		throws NullPointerException, DatoNoValidoException {
+		if (categoria == null || fechaContratacion == null) {
+			throw new NullPointerException();
+		}
+		if (fechaContratacion.isAfter(LocalDate.now())){
+			throw new DatoNoValidoException();
+		}
 		this.nombre = nombre;
 		this.DNI=DNI;
 		this.categoria=categoria;

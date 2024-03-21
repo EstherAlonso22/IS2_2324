@@ -17,6 +17,28 @@ public class EmpleadoTest {
 	public void setUp() throws Exception {
 		empleado = new Empleado();
 	}
+	
+	@Test
+	void testEmpleado() {
+		LocalDate hoy = LocalDate.now();
+		
+		//Casos validos
+		Empleado empleado1 = new Empleado("12345678K", "Pepa", Categoria.ENCARGADO, hoy.minusYears(1));
+		assertEquals("12345678K", empleado1.getDNI());
+		assertEquals("Pepa", empleado1.getNombre());
+		assertEquals(Categoria.ENCARGADO, empleado1.getCategoria());
+		assertEquals(hoy.minusYears(1), empleado1.getFechaContratacion());
+		
+		empleado1 = new Empleado("12345678K", "Pepa", Categoria.VENDEDOR, hoy);
+		assertEquals(Categoria.VENDEDOR, empleado1.getCategoria());
+		assertEquals(hoy, empleado1.getFechaContratacion());
+		
+		empleado1 = new Empleado("12345678K", "Pepa", Categoria.AUXILIAR, hoy);
+		assertEquals(Categoria.AUXILIAR, empleado1.getCategoria());
+		
+		//Casos no válidos
+		
+	}
 
 	@Test
 	void testSueldoBruto() {
