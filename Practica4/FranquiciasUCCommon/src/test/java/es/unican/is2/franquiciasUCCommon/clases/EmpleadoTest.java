@@ -37,7 +37,10 @@ public class EmpleadoTest {
 		assertEquals(Categoria.AUXILIAR, empleado1.getCategoria());
 		
 		//Casos no válidos
-		
+		assertThrows (NullPointerException.class, () -> new Empleado("12345678K", "Pepa", null, hoy));
+		assertThrows (DatoNoValidoException.class, () -> new Empleado("12345678K", "Pepa", Categoria.ENCARGADO, hoy.plusDays(1)));
+		assertThrows (NullPointerException.class, () -> new Empleado("12345678K", "Pepa", Categoria.ENCARGADO, null));
+
 	}
 
 	@Test
