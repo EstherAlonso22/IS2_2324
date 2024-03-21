@@ -7,6 +7,8 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import es.unican.is2.franquiciasUCCommon.clases.Empleado.DatoNoValidoException;
+
 
 public class EmpleadoTest {
 	private Empleado empleado;
@@ -98,6 +100,13 @@ public class EmpleadoTest {
 		empleado.setCategoria(Categoria.ENCARGADO);
 		empleado.setFechaContratacion(hoy.plusDays(1));
 		empleado.setBaja(false);
+		assertThrows(DatoNoValidoException.class, () -> empleado.sueldoBruto());
+		
+		// 3º caso
+		empleado.setCategoria(Categoria.VENDEDOR);
+		empleado.setFechaContratacion(null);
+		empleado.setBaja(true);
+		assertThrows(NullPointerException.class, () -> empleado.sueldoBruto());
 		
 		
 		

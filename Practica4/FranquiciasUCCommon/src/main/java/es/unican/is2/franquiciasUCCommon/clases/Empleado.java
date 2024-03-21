@@ -14,6 +14,16 @@ public class Empleado {
 	private Categoria categoria;
 	private LocalDate fechaContratacion;
 	private boolean baja;
+
+	
+	/**
+	 * Lanzada si se trata de anhadir un dato no valido.
+	 */
+	@SuppressWarnings("serial")
+	public static class DatoNoValidoException extends RuntimeException {
+	}
+	
+	
 	
 	public Empleado() {	}
 	
@@ -36,8 +46,12 @@ public class Empleado {
 	/**
 	 * Retorna el sueldo bruto del empleado
 	 */
-	public double sueldoBruto() {
+	public double sueldoBruto() throws DatoNoValidoException, NullPointerException {
 		double sueldo = 0;
+		
+		if (categoria == null || fechaContratacion == null) {
+			throw new NullPointerException();
+		}
 		
 		//Calcula el sueldo base dependiendo de la categoria
 		switch (categoria) {
@@ -49,6 +63,8 @@ public class Empleado {
 			break;
 		case AUXILIAR:
 			sueldo = 1000;
+			break;
+		default: 
 			break;
 		}
 		
@@ -62,6 +78,11 @@ public class Empleado {
 		} else if (fechaContratacion.plusYears(5).isBefore(hoy)){
 			sueldo = sueldo + 50;
 		}
+		
+		else if (fechaContratacion.isAfter(hoy)){
+			throw new DatoNoValidoException();
+		}
+		
 		
 		//Comprueba si esta de baja
 		if (baja) {
