@@ -132,9 +132,31 @@ public class EmpleadoTest {
 		empleado.setFechaContratacion(null);
 		empleado.setBaja(true);
 		assertThrows(NullPointerException.class, () -> empleado.sueldoBruto());
+				
+	}
+	
+	@Test
+	void testBajaAlta() {
+		empleado.darDeBaja();
+		assertEquals(true, empleado.getBaja());
+		empleado.darDeBaja();
+		assertEquals(true, empleado.getBaja());
+		empleado.darDeAlta();
+		assertEquals(false, empleado.getBaja());
+		empleado.darDeAlta();
+		assertEquals(false, empleado.getBaja());
 		
-		
+		empleado.setBaja(true);
+		assertEquals(true, empleado.getBaja());
+		empleado.setBaja(false);
+		assertEquals(false, empleado.getBaja());
+	}
+	
+	@Test
+	void testSetters() {
+		empleado.setDNI("12345678K");
 		
 	}
+		
 		
 }

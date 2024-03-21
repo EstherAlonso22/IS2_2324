@@ -25,7 +25,11 @@ public class Tienda implements Serializable {
 	 * @param nombre Nombre de la tienda
 	 * @param direccion Direccion de la tienda
 	 */
-	public Tienda(String nombre, String direccion) {
+	public Tienda(String nombre, String direccion) 
+			throws NullPointerException{
+		if (nombre == null || direccion == null) {
+			throw new NullPointerException();
+		}
 		this.nombre=nombre;
 		this.direccion= direccion;
 	}
