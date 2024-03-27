@@ -6,7 +6,7 @@ import es.unican.is2.franquiciasUCCommon.clases.OperacionNoValidaException;
 import es.unican.is2.franquiciasUCCommon.clases.Tienda;
 import es.unican.is2.franquiciasUCCommon.interfaces.*;
 
-public class GestionEmpleados implements IGestionEmpleados {
+public class GestionEmpleados implements IGestionEmpleados, IGestionAltasBajas {
 	private ITiendasDAO tiendasDAO;
 	private IEmpleadosDAO empleadosDAO;
 	
@@ -26,7 +26,7 @@ public class GestionEmpleados implements IGestionEmpleados {
 			return null;
 		}
 		
-		tienda.getEmpleados().add(empleado);
+		tiendasDAO.tiendaPorNombre(nombre).getEmpleados().add(empleado);
 		return empleado;
 	}
 
@@ -40,9 +40,11 @@ public class GestionEmpleados implements IGestionEmpleados {
 		if (empleado == null ) {
 			return null;
 		}
-		if (!tienda.getEmpleados().remove(empleado)) {
+		if (!tienda.getEmpleados().contains(empleado)) {
 			throw new OperacionNoValidaException("El empleado no pertenece a esa tienda");
 		}
+		
+		tiendasDAO.tiendaPorNombre(nombre).getEmpleados().remove(empleado);
 		return empleado;
 	}
 
@@ -55,15 +57,40 @@ public class GestionEmpleados implements IGestionEmpleados {
 		if (tiendaActual == null || empleado == null || tiendaDest == null) {
 			return false;
 		}
-		if (!tiendaActual.getEmpleados().remove(empleado)) {
+		if (!tiendasDAO.tiendaPorNombre(actual).getEmpleados().remove(empleado)) {
 			throw new OperacionNoValidaException("El empleado no pertenece a esa tienda");
 		}
-		return tiendaDest.getEmpleados().add(empleado);	
+		
+		return tiendasDAO.tiendaPorNombre(destino).getEmpleados().add(empleado);	
 	}
 
 	@Override
 	public Empleado empleado(String dni) throws DataAccessException {
 		return empleadosDAO.empleado(dni);
+	}
+
+	@Override
+	public boolean bajaMedica(String dni) throws DataAccessException {
+		// TODO Auto-generated method stub
+		Empleado empleado = empleadosDAO.empleado(dni);
+		if (empleado == null || empleado.getBaja()) {
+			return false;
+		}
+		
+		empleadosDAO.empleado(dni).darDeBaja();
+		return true;
+	}
+
+	@Override
+	public boolean altaMedica(String dni) throws DataAccessException {
+		// TODO Auto-generated method stub
+		Empleado empleado = empleadosDAO.empleado(dni);
+		if (empleado == null || !empleado.getBaja()) {
+			return false;
+		}
+		
+		empleadosDAO.empleado(dni).darDeAlta();
+		return true;
 	}
 
 }
