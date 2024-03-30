@@ -1,7 +1,10 @@
 package es.unican.is2.franquiciasUCGUI;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.fest.swing.fixture.FrameFixture;
 import org.junit.jupiter.api.*;
+import java.util.Arrays;
 
 import es.unican.is2.franquiciasUCBusiness.GestionEmpleados;
 import es.unican.is2.franquiciasUCBusiness.GestionTiendas;
@@ -38,22 +41,48 @@ class VistaGerenteITest {
 		demo.textBox("txtNombreTienda").enterText("Tienda1");
 		demo.button("btnBuscar").click();
 		demo.textBox("txtDireccionTienda").requireText("Tienda no existe");
-
+		demo.textBox("txtNombreTienda").deleteText();
+		demo.textBox("txtTotalContribuyente").requireText("");
+		String[] contenidoLista = {};
+		assertTrue(Arrays.equals(demo.list("listNombreEmpleados").contents(),contenidoLista));
+		
 		demo.textBox("txtNombreTienda").enterText("");
 		demo.button("btnBuscar").click();
 		demo.textBox("txtDireccionTienda").requireText("Tienda no existe");
+		demo.textBox("txtNombreTienda").deleteText();
+		demo.textBox("txtTotalContribuyente").requireText("");
+		assertTrue(Arrays.equals(demo.list("listNombreEmpleados").contents(),contenidoLista));
 
+		
 		//Casos válidos
 		demo.textBox("txtNombreTienda").enterText("Tienda A");
 		demo.button("btnBuscar").click();
-		demo.textBox("txtDireccionTienda").requireText("Direccion A");
-		demo.textBox("txtTotalSueldos").requireText("2100");
+		demo.textBox("txtDireccionTienda").requireText("Direcci�n A");
+		demo.textBox("txtTotalContribuyente").requireText("4362.5");
+		String[] contenidoLista1 = {"Juan Perez","Maria Rodriguez","Luis Mart�nez"};
+		assertTrue(Arrays.equals(demo.list("listNombreEmpleados").contents(),contenidoLista1));
+		demo.textBox("txtNombreTienda").deleteText();
+		
+		demo.textBox("txtNombreTienda").enterText("Tienda B");
+		demo.button("btnBuscar").click();
+		demo.textBox("txtDireccionTienda").requireText("Direcci�n B");
+		demo.textBox("txtTotalContribuyente").requireText("2100.0");
+		String[] contenidoLista2 = {"Luc�a Ib��ez"};
+		assertTrue(Arrays.equals(demo.list("listNombreEmpleados").contents(),contenidoLista2));		
+		demo.textBox("txtNombreTienda").deleteText();
+		
+		demo.textBox("txtNombreTienda").enterText("Tienda C");
+		demo.button("btnBuscar").click();
+		demo.textBox("txtDireccionTienda").requireText("Direcci�n C");
+		demo.textBox("txtTotalContribuyente").requireText("0.0");
+		assertTrue(Arrays.equals(demo.list("listNombreEmpleados").contents(),contenidoLista));
+		demo.textBox("txtNombreTienda").deleteText();
+		
 		
 		// Sleep para visualizar como se realiza el test
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(4000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

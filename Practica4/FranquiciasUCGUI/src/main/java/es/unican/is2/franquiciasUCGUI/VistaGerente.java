@@ -64,7 +64,7 @@ public class VistaGerente extends JFrame {
 		txtTotalSueldos.setName("txtTotalContribuyente");
 
 		JLabel lblTotalSueldos = new JLabel("Total sueldos");
-		lblTotalSueldos.setBounds(115, 254, 99, 14);
+	 	lblTotalSueldos.setBounds(115, 254, 99, 14);
 		contentPane.add(lblTotalSueldos);
 
 		listNombreEmpleados = new JList<String>();
@@ -96,7 +96,8 @@ public class VistaGerente extends JFrame {
 		txtNombreTienda.setBounds(10, 51, 113, 20);
 		contentPane.add(txtNombreTienda);
 		txtNombreTienda.setColumns(10);
-		txtNombreTienda.setName("txtDireccionTienda");
+		//Error: txtNombreTienda.setName("txtDireccionTienda");
+		txtNombreTienda.setName("txtNombreTienda");
 
 		JLabel lblNombreTienda = new JLabel("Nombre Tienda");
 		lblNombreTienda.setBounds(21, 27, 139, 14);
@@ -109,6 +110,7 @@ public class VistaGerente extends JFrame {
 				rellenaDatosTienda(txtNombreTienda.getText());
 			}
 		});
+		
 		btnBuscar.setBounds(21, 122, 89, 23);
 		contentPane.add(btnBuscar);
 		btnBuscar.setName("btnBuscar");
@@ -120,10 +122,12 @@ public class VistaGerente extends JFrame {
 		try {
 		Tienda t = tiendas.tienda(nombre);
 		if (t != null) {
-			txtDireccionTienda.setText(t.getNombre());
+			//Error: txtDireccionTienda.setText(t.getNombre());
+			txtDireccionTienda.setText(t.getDireccion());
 			txtTotalSueldos.setText(Double.toString(t.gastoMensualSueldos()));
 			listModel.removeAllElements();
-			for (int i = 0; i < t.getEmpleados().size()-1; i++) {
+			//Error: for (int i = 0; i < t.getEmpleados().size()-1; i++) {
+			for (int i = 0; i < t.getEmpleados().size(); i++) {
 				Empleado e = t.getEmpleados().get(i);
 				listModel.addElement(e.getNombre());
 			}
