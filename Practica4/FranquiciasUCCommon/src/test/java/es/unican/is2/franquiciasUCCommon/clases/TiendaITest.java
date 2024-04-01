@@ -18,6 +18,7 @@ public class TiendaITest {
 		assertDoesNotThrow(() -> {
 			tienda = new Tienda("Tienda1", "Santander");
 			assertEquals("Tienda1", tienda.getNombre());
+			assertEquals("Santander", tienda.getDireccion());
 		});
 		assertThrows(NullPointerException.class, () -> new Tienda(null, "Santander"));
 		assertThrows(NullPointerException.class, () -> new Tienda("Tienda1", null));
@@ -41,6 +42,13 @@ public class TiendaITest {
 			tienda.getEmpleados().add(empleado3);
 			assertEquals(4500.0, tienda.gastoMensualSueldos());
 		});
+	}
+	
+	@Test
+	void testSetters() {
+		tienda.setDireccion("Santander");
+		tienda.setId(0);
+		tienda.setNombre("Tienda1");
 	}
 
 }
