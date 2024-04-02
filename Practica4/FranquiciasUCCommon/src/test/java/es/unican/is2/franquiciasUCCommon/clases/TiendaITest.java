@@ -47,8 +47,11 @@ public class TiendaITest {
 	@Test
 	void testSetters() {
 		tienda.setDireccion("Santander");
+		assertEquals("Santander", tienda.getDireccion());
 		tienda.setId(0);
+		assertEquals(0, tienda.getId());
 		tienda.setNombre("Tienda1");
+		assertEquals("Tienda1", tienda.getNombre());
 	}
 
 }

@@ -153,18 +153,20 @@ public class EmpleadoTest {
 			assertEquals(false, empleado.getBaja());
 			empleado.darDeAlta();
 			assertEquals(false, empleado.getBaja());
-
-			empleado.setBaja(true);
-			assertEquals(true, empleado.getBaja());
-			empleado.setBaja(false);
-			assertEquals(false, empleado.getBaja());
 		});
 	}
 
 	@Test
 	void testSetters() {
 		empleado.setDNI("12345678K");
-
+		assertEquals("12345678K", empleado.getDNI());
+		empleado.setNombre("Paquito");
+		assertEquals("Paquito", empleado.getNombre());
+		empleado.setBaja(true);
+		assertEquals(true, empleado.getBaja());
+		empleado.setBaja(false);
+		assertEquals(false, empleado.getBaja());
+		
 	}
 
 
