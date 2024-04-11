@@ -1,4 +1,4 @@
-package es.unican.is2.listaOrdenadaAcotada;
+package es.unican.is2.ListaOrdenadaAcotada;
 /**
  * TDA ListaOrdenadaAcotada
  * Estructura de datos que almacena datos ordenados de acuerdo
