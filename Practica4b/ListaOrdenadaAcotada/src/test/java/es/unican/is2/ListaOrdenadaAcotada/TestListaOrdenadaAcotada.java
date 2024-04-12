@@ -87,5 +87,26 @@ class TestListaOrdenadaAcotada {
 
 	}
 	
+	@Test
+	void testClear() {
+		
+		assertDoesNotThrow(() -> {
+			//Casos validos
+			// 1º Caso
+			lista3.clear();
+			assertEquals(0, lista3.size());
+			
+			// 2º Caso
+			lista1.clear();
+			assertEquals(0, lista1.size());
+			
+			// 3º Caso
+			lista2.clear();
+			assertEquals(0, lista2.size());
+			
+		});
+
+	}
+	
 	
 }
