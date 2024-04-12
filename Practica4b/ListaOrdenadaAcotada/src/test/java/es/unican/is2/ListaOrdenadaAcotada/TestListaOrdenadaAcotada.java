@@ -38,7 +38,7 @@ class TestListaOrdenadaAcotada {
 	}
 
 	@Test
-	void getTest() {
+	void testGet() {
 
 		//Casos válidos
 		assertDoesNotThrow(() -> {
@@ -48,18 +48,33 @@ class TestListaOrdenadaAcotada {
 		});
 		
 		//Casos no válidos
-		
+		assertThrows (IndexOutOfBoundsException.class, () -> lista1.get(-1));
+		assertThrows (IndexOutOfBoundsException.class, () -> lista2.get(4));
+		assertThrows (IndexOutOfBoundsException.class, () -> lista3.get(0));
 	}
 
 
 	@Test
 	void testAdd() {
 
+		//Casos válidos
 		assertDoesNotThrow(() -> {
-			//Casos validos
-			// 1º Caso
-
-
+			lista3.add(4);
+			assertEquals(lista3.size(),1);
+			assertEquals(lista3.get(0),4);
+			
+			lista1.add(4);
+			assertEquals(lista1.size(), 2);
+			assertEquals(lista1.get(0), 1);
+			assertEquals(lista1.get(1), 4);
+			
+			lista2.add(4);
+			assertEquals(lista2.size(), 5);
+			assertEquals(lista2.get(0), 1);
+			assertEquals(lista2.get(1), 4);
+			assertEquals(lista2.get(2), 4);
+			assertEquals(lista2.get(3), 5);
+			assertEquals(lista2.get(4), 6);
 		});
 
 		//Casos no válidos
