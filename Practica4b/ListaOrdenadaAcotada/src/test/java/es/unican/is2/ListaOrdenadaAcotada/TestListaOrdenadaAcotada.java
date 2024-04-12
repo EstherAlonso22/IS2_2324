@@ -123,5 +123,37 @@ class TestListaOrdenadaAcotada {
 
 	}
 	
+	@Test
+	void testRemove() {
+		
+		assertDoesNotThrow(() -> {
+			//Casos validos
+			// 1º Caso
+			assertEquals(1, lista1.remove(0));
+			assertEquals(0, lista1.size());
+			
+			// 2º Caso
+			assertEquals(4, lista2.remove(1));
+			assertEquals(3, lista2.size());
+			assertEquals(lista2.get(0), 1);
+			assertEquals(lista2.get(1), 5);
+			assertEquals(lista2.get(2), 6);
+			
+			// 3º Caso
+			assertEquals(6, lista2.remove(3));
+			assertEquals(3, lista2.size());
+			assertEquals(lista2.get(0), 1);
+			assertEquals(lista2.get(1), 4);
+			assertEquals(lista2.get(2), 5);
+			
+		});
+
+		// Casos no válidos
+		assertThrows (IndexOutOfBoundsException.class, () -> lista1.remove(-1));
+		assertThrows (IndexOutOfBoundsException.class, () -> lista2.remove(4));
+		assertThrows (IndexOutOfBoundsException.class, () -> lista3.remove(0));
+	
+	}
+	
 	
 }
