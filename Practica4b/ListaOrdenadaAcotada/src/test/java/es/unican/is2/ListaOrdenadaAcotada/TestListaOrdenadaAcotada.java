@@ -99,15 +99,16 @@ class TestListaOrdenadaAcotada {
 	}
 	
 	@Test
-	void testClear() {
+	void testClear() {  
 		
 		//Casos validos
-		assertDoesNotThrow(() -> {
+		assertDoesNotThrow(() -> { 
+			 
+			lista1.clear();
+			assertEquals(0, lista1.size()); //Falla aquí
+			
 			lista3.clear();
 			assertEquals(0, lista3.size());
-			
-			lista1.clear();
-			assertEquals(0, lista1.size());
 			
 			lista2.clear();
 			assertEquals(0, lista2.size());
@@ -117,7 +118,7 @@ class TestListaOrdenadaAcotada {
 	}
 	
 	@Test
-	void testRemove() {
+	void testRemoveValidos() {
 		
 		assertDoesNotThrow(() -> {
 			//Casos validos
@@ -129,10 +130,11 @@ class TestListaOrdenadaAcotada {
 			assertEquals(4, lista2.remove(1));
 			assertEquals(3, lista2.size());
 			assertEquals(lista2.get(0), 1);
-			assertEquals(lista2.get(1), 5);
-			assertEquals(lista2.get(2), 6);
+			assertEquals(lista2.get(1), 5);   
+			assertEquals(lista2.get(2), 6); //Falla aquí
 			
 			// 3º Caso
+			lista2.add(4); //Para que vuelva a ser como antes
 			assertEquals(6, lista2.remove(3));
 			assertEquals(3, lista2.size());
 			assertEquals(lista2.get(0), 1);
@@ -140,7 +142,10 @@ class TestListaOrdenadaAcotada {
 			assertEquals(lista2.get(2), 5);
 			
 		});
-
+	}
+	
+	@Test
+	void testRemoveNoValidos() {
 		// Casos no válidos
 		assertThrows (IndexOutOfBoundsException.class, () -> lista1.remove(-1));
 		assertThrows (IndexOutOfBoundsException.class, () -> lista2.remove(4));
