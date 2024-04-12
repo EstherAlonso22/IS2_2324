@@ -49,4 +49,26 @@ class TestListaOrdenadaAcotada {
 		
 
 	}
+	
+	@Test
+	void testSize() {
+		
+		assertDoesNotThrow(() -> {
+			//Casos validos
+			// 1º Caso
+			assertEquals(0, lista3.size());
+			
+			// 2º Caso
+			assertEquals(1, lista1.size());
+			
+			// 3º Caso
+			assertEquals(4, lista2.size());
+			
+			// 4º Caso
+			assertEquals(5, lista4.size());
+		});
+
+	}
+	
+	
 }
