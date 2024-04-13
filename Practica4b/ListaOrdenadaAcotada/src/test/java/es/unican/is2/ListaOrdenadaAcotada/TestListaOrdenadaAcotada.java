@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import es.unican.is2.listaOrdenadaAcotada.ListaOrdenadaAcotada;
-
 class TestListaOrdenadaAcotada {
 	public ListaOrdenadaAcotada<Integer> lista1;
 	public ListaOrdenadaAcotada<Integer> lista2;
