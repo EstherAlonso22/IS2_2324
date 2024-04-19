@@ -1,3 +1,4 @@
+package es.unican.is2.Practica5a;
 public class vendedorEnPracticas extends Vendedor {
 	
 	private String dni;
