@@ -53,7 +53,7 @@ public class Tienda {
 	 * @return true si el vendedor se ha anhadido 
 	 *         false si ya existe el vendedor
 	 */
-	public boolean anhade(Vendedor nuevo) throws DataAccessException { //WMC + 1
+	public boolean anhadeVendedor(Vendedor nuevo) throws DataAccessException { //WMC + 1
 		Vendedor v = buscaVendedor(nuevo.getId());
 		if (v != null) { //WMC + 1 //CCog +1
 			return false;
@@ -296,21 +296,21 @@ public class Tienda {
 			for (Vendedor v : senior) { //WMC +1 //CCog +2
 				VendedorEnPlantilla v1 = (VendedorEnPlantilla) v;
 				out.println("  Nombre: " + v1.getNombre() + " Id: " + v1.getId() + " DNI: " + v1.dni()
-						+ " TotalVentasMes: " + v1.getTotalVentas() + " TotalComision: "+ v1.getC());
+				+ " TotalVentasMes: " + v1.getTotalVentas() + " TotalComision: "+ v1.getC());
 			}
 			out.println();
 			out.println("Junior");
 			for (Vendedor v : junior) { //WMC +1 //CCog +2
 				VendedorEnPlantilla v2 = (VendedorEnPlantilla) v;
 				out.println("  Nombre: " + v2.getNombre() + " Id: " + v2.getId() + " DNI: " + v2.dni()
-						+ " TotalVentasMes: " + v2.getTotalVentas() + " TotalComision: "+ v2.getC());
+				+ " TotalVentasMes: " + v2.getTotalVentas() + " TotalComision: "+ v2.getC());
 			}
 			out.println();
 			out.println("Practicas");
 			for (Vendedor v : practicas) { //WMC +1 //CCog +2
 				vendedorEnPracticas v3 = (vendedorEnPracticas) v;
 				out.println("  Nombre: " + v3.getNombre() + " Id: " + v3.getId() + " DNI: " + v3.getDni()
-						+ " TotalVentasMes: " + v3.getTotalVentas());
+				+ " TotalVentasMes: " + v3.getTotalVentas());
 			}
 		} catch (IOException e) { //WMC +1 //CCog +1
 			throw new DataAccessException();
