@@ -1,4 +1,4 @@
-package es.unican.is2.Practica5a;
+package es.unican.is2.Practica5aRefactorizado;
 /**
  * Vendedor de la tienda. 
  * Por cada vendedor se almacenan sus datos personales 
@@ -10,10 +10,13 @@ public abstract class Vendedor {
 	private String nombre;
 	private double c;
 	private double totalVentas;
+	private String dni;
 	
-	public Vendedor(String nombre, String id) { //WMC +1
+	
+	public Vendedor(String nombre, String id, String dni) { //WMC +1
 		this.nombre = nombre;
 		this.id = id;
+		this.dni=dni;
 	}
 	
 	/**
@@ -32,6 +35,14 @@ public abstract class Vendedor {
 		return id;
 	}
 	
+	/**
+	 * Retorna el dni del vendedor
+	 * @return dni
+	 */
+	public String getDni() { //WMC +1
+		return dni;
+	}
+
 	/**
 	 * Retorna la comision mensual acumulada
 	 * @return Comision total acumulada
@@ -71,4 +82,20 @@ public abstract class Vendedor {
 	public void anhade(double importe)  { //WMC +1
 		totalVentas += importe;
 	}
+
+	/**
+	 * Anhade una venta calculando y actualizando la comision del vendedor.
+	 * @param importe De la venta
+	 */
+	protected abstract void anhadeVentaComision(double importe); //WMC +1
+	
+	@Override
+	public boolean equals(Object obj) { //WMC +1 
+		if (!(obj instanceof Vendedor)) //WMC +1 //CCog +1
+			return false;
+		Vendedor v = (Vendedor) obj;
+		return (v.getId().equals(getId()) && v.getDni().equals(getDni())); //CCog +1
+	}
+
+	
 }

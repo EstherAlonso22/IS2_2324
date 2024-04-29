@@ -1,4 +1,4 @@
-package es.unican.is2.Practica5a;
+package es.unican.is2.Practica5aRefactorizado;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import es.unican.is2.Practica5aRefactorizado.TipoVendedor;
+import es.unican.is2.Practica5aRefactorizado.VendedorEnPlantilla;
 
 
 
@@ -17,19 +20,19 @@ public class VendedorEnPlantillaTest {
 	
 	@BeforeEach
 	public void setUp(){
-		sutJunior = new VendedorEnPlantilla("Ana", "1", "11111111A", TipoVendedor.Junior);
-		sutSenior = new VendedorEnPlantilla("Pepe", "2", "222222222A", TipoVendedor.Senior);
+		sutJunior = new VendedorJunior("Ana", "1", "11111111A");
+		sutSenior = new VendedorSenior("Pepe", "2", "222222222A");
 	}
 	
 	@Test
 	public void testConstructor() {
 		assertEquals(sutJunior.getId(), "1");
-		assertEquals(sutJunior.dni(), "11111111A");
+		assertEquals(sutJunior.getDni(), "11111111A");
 		assertEquals(sutJunior.getNombre(), "Ana");
 		assertTrue(sutJunior.getTotalVentas()==0.0);
 		assertTrue(sutJunior.getC()==0.0);
-		assertEquals(sutJunior.tipo(), TipoVendedor.Junior);
-		assertEquals(sutSenior.tipo(), TipoVendedor.Senior);
+		assertTrue(sutJunior instanceof VendedorJunior);
+		assertTrue(sutSenior instanceof VendedorSenior);
 		
 	}
 
@@ -93,18 +96,18 @@ public class VendedorEnPlantillaTest {
 	
 	@Test
 	public void testEquals() {
-		VendedorEnPlantilla igualJunior = new VendedorEnPlantilla("Ana", "1", "11111111A", TipoVendedor.Junior);
-		VendedorEnPlantilla distintoIdJunior = new VendedorEnPlantilla("Ana", "2", "11111111A", TipoVendedor.Junior);
-		VendedorEnPlantilla distintoDNIJunior = new VendedorEnPlantilla("Ana", "1", "222222222A", TipoVendedor.Junior);
+		VendedorJunior igualJunior = new VendedorJunior("Ana", "1", "11111111A");
+		VendedorJunior distintoIdJunior = new VendedorJunior("Ana", "2", "11111111A");
+		VendedorJunior distintoDNIJunior = new VendedorJunior("Ana", "1", "222222222A");
 		
 		assertTrue(sutJunior.equals(igualJunior));
 		assertFalse(sutJunior.equals(distintoIdJunior));
 		assertFalse(sutJunior.equals(distintoDNIJunior));
 		
 		
-		VendedorEnPlantilla igualSenior = new VendedorEnPlantilla("Pepe", "2", "222222222A", TipoVendedor.Senior);
-		VendedorEnPlantilla distintoIdSenior = new VendedorEnPlantilla("Pepe", "3", "222222222A", TipoVendedor.Senior);
-		VendedorEnPlantilla distintoDNISenior = new VendedorEnPlantilla("Pepe", "2", "33333333A", TipoVendedor.Senior);
+		VendedorSenior igualSenior = new VendedorSenior("Pepe", "2", "222222222A");
+		VendedorSenior distintoIdSenior = new VendedorSenior("Pepe", "3", "222222222A");
+		VendedorSenior distintoDNISenior = new VendedorSenior("Pepe", "2", "33333333A");
 		
 		assertTrue(sutSenior.equals(igualSenior));
 		assertFalse(sutSenior.equals(distintoIdSenior));
