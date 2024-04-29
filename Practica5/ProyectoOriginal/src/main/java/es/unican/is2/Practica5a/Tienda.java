@@ -206,7 +206,6 @@ public class Tienda {
 			in.next();
 			Vendedor ven = null;
 			// lee los vendedores senior
-			// lee los vendedores senior
 			while (in.hasNext() && !in.next().equals("Junior")) { //WMC +2 //CCog +3
 				String nombre = in.next();
 				in.next();

@@ -29,6 +29,7 @@ public class GestionComisiones {
 		String msj;
 
 		// crea la tienda
+		//IMP: Tener datosTienda.txt en esa direccion / cambiar la direccion
 		Tienda tienda = new Tienda("C:\\temp\\datosTienda.txt");
 
 		// crea la ventana de menu

@@ -140,6 +140,7 @@ public class Tienda {
 			in.next();
 			// lee los vendedores senior
 			while (in.hasNext() && !in.next().equals("Junior")) { //WMC +2 //CCog +3
+				System.out.print("A");
 				creaVendedorDatos(in, "Senior");
 			}
 			// lee los vendedores junior
@@ -147,6 +148,7 @@ public class Tienda {
 				creaVendedorDatos(in, "Junior");
 			}
 			while (in.hasNext()) { //WMC +1 //CCog +2
+				in.next();
 				creaVendedorDatos(in, "Practicas");
 			}
 		} catch (FileNotFoundException e) { //WMC +1 //CCog +1
@@ -172,20 +174,21 @@ public class Tienda {
 		String dni = in.next();
 		in.next();
 		double totalVentas = in.nextDouble();
-		in.next();
-		double totalComision = in.nextDouble();
 		switch (tipo) { //CCog +1
 		case "Senior": //WMC +1
 			ven = new VendedorSenior(nombre, idIn, dni);
+			in.next();
+			ven.setC(in.nextDouble());
 			break;
 		case "Junior": //WMC +1
 			ven = new VendedorJunior(nombre, idIn, dni);
+			in.next();
+			ven.setC(in.nextDouble());
 			break;
 		case "Practicas": //WMC +1
 			ven = new VendedorEnPracticas(nombre, idIn, dni);
 		}
 		ven.setTotalVentas(totalVentas);
-		ven.setC(totalComision);
 		lista.add(ven);
 	}
 
@@ -213,9 +216,9 @@ public class Tienda {
 
 			out.println(nombre);
 			out.println(direccion);
-			escribeVendedor(out, senior, "Plantilla");
-			escribeVendedor(out, junior, "Plantilla");
-			escribeVendedor(out, practicas, "Practicas");
+			escribeVendedor(out, senior, "Plantilla", "Senior");
+			escribeVendedor(out, junior, "Plantilla", "Junior");
+			escribeVendedor(out, practicas, "Practicas", "Practicas");
 		} catch (IOException e) { //WMC +1 //CCog +1
 			throw new DataAccessException();
 
@@ -231,9 +234,9 @@ public class Tienda {
 	 * @param list Lista de los vendedores de ese tipo
 	 * @param tipo Tipo de vendedor a escribir
 	 */
-	private void escribeVendedor(PrintWriter out, List<Vendedor> list, String tipo) { //WMC +1
+	private void escribeVendedor(PrintWriter out, List<Vendedor> list, String tipo, String subtipo) { //WMC +1
 		out.println();
-		out.println(tipo);
+		out.println(subtipo);
 		for (Vendedor v : list) { //WMC +1  //CCog +1
 			if (tipo.equals("Plantilla")) {  //WMC +1 //CCog +2
 				VendedorEnPlantilla v1 = (VendedorEnPlantilla) v;
