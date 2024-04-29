@@ -11,10 +11,8 @@ public class VendedorEnPracticas extends Vendedor {
 	}
 
 	@Override
-	protected void anhadeVentaComision(double importe) {
-		// TODO Revisar
+	protected void anhadeVentaComision(double importe) { //WMC +1
 		anhade(importe);
-		setC(getC());
 	}
 	
 }

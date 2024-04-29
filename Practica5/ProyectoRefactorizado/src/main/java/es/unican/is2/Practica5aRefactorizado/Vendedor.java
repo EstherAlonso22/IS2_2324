@@ -83,7 +83,11 @@ public abstract class Vendedor {
 		totalVentas += importe;
 	}
 
-	protected abstract void anhadeVentaComision(double importe);
+	/**
+	 * Anhade una venta calculando y actualizando la comision del vendedor.
+	 * @param importe De la venta
+	 */
+	protected abstract void anhadeVentaComision(double importe); //WMC +1
 	
 	@Override
 	public boolean equals(Object obj) { //WMC +1 

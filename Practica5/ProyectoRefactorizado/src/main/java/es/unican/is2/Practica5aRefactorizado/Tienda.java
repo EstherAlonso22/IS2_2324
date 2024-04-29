@@ -138,7 +138,6 @@ public class Tienda {
 			nombre = in.nextLine();
 			direccion = in.nextLine();
 			in.next();
-			Vendedor ven = null;
 			// lee los vendedores senior
 			while (in.hasNext() && !in.next().equals("Junior")) { //WMC +2 //CCog +3
 				creaVendedorDatos(in, "Senior");
@@ -164,8 +163,8 @@ public class Tienda {
 	 * @param in Fichero a leer
 	 * @param tipo Tipo de vendedor que crea
 	 */
-	private void creaVendedorDatos(Scanner in, String tipo) {
-		Vendedor ven;
+	private void creaVendedorDatos(Scanner in, String tipo) { //WMC +1
+		Vendedor ven = null;
 		String nombre = in.next();
 		in.next();
 		String idIn = in.next();
@@ -175,14 +174,14 @@ public class Tienda {
 		double totalVentas = in.nextDouble();
 		in.next();
 		double totalComision = in.nextDouble();
-		switch (tipo) {
-		case "Senior":
+		switch (tipo) { //CCog +1
+		case "Senior": //WMC +1
 			ven = new VendedorSenior(nombre, idIn, dni);
 			break;
-		case "Junior":
+		case "Junior": //WMC +1
 			ven = new VendedorJunior(nombre, idIn, dni);
 			break;
-		default:
+		case "Practicas": //WMC +1
 			ven = new VendedorEnPracticas(nombre, idIn, dni);
 		}
 		ven.setTotalVentas(totalVentas);
@@ -203,7 +202,7 @@ public class Tienda {
 		for (Vendedor v : lista) { //WMC +1 //CCog +1
 			if (v instanceof VendedorEnPracticas) { //WMC +1 //CCog +2
 				practicas.add(v);
-			} else if (v instanceof VendedorSenior) { //WMC +1 //CCog +1
+			} else if (v instanceof VendedorSenior) { //WMC +1 //CCog +2
 				senior.add(v);
 			}	else //CCog +1
 				junior.add(v);
@@ -226,21 +225,32 @@ public class Tienda {
 		}
 	}
 
-	private void escribeVendedor(PrintWriter out, List<Vendedor> list, String tipo) {
+	/**
+	 * Actualiza los datos de un tipo de vendedor en el fichero.
+	 * @param out Fichero a escribir
+	 * @param list Lista de los vendedores de ese tipo
+	 * @param tipo Tipo de vendedor a escribir
+	 */
+	private void escribeVendedor(PrintWriter out, List<Vendedor> list, String tipo) { //WMC +1
 		out.println();
 		out.println(tipo);
-		for (Vendedor v : list) { 
-			if (tipo.equals("Plantilla")) {
+		for (Vendedor v : list) { //WMC +1  //CCog +1
+			if (tipo.equals("Plantilla")) {  //WMC +1 //CCog +2
 				VendedorEnPlantilla v1 = (VendedorEnPlantilla) v;
 				out.println(calculaString(v1) + " TotalComision: "+ v1.getC());
-			} else {
+			} else {  //CCog +1
 				VendedorEnPracticas v1 = (VendedorEnPracticas) v;
 				out.println(calculaString(v1));
 			}
 		}
 	}
 
-	private String calculaString(Vendedor v1) {
+	/**
+	 * Devuelve el string que hay que añadir, con los datos del vendedor
+	 * @param v1 Vendedor
+	 * @return String
+	 */
+	private String calculaString(Vendedor v1) {  //WMC +1
 		return "  Nombre: " + v1.getNombre() + " Id: " + v1.getId() + " DNI: " + v1.getDni()
 		+ " TotalVentasMes: " + v1.getTotalVentas();
 	}

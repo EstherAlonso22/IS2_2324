@@ -10,13 +10,18 @@ public abstract class VendedorEnPlantilla extends Vendedor {
 	}
 	
     @Override
-	public void anhadeVentaComision(double importe) {
+	public void anhadeVentaComision(double importe) { //WMC +1
 		double comision = 0;
 		comision = calculaComision(importe);
 		anhade(importe);
 		setC(getC()+comision);
 	}
 	
-	protected abstract double calculaComision(double importe);
+    /**
+     * Calcula la comision de una venta teniendo en cuenta el importe.
+     * @param importe Importe de la venta
+     * @return Comision calculada
+     */
+	protected abstract double calculaComision(double importe); //WMC +1
 
 }
