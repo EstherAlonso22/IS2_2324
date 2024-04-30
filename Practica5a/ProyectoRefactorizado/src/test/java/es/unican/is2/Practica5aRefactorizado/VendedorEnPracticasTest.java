@@ -50,19 +50,20 @@ public class VendedorEnPracticasTest {
 		sut.setC(0);
 		assertTrue(sut.getC()==0.0);
 	}
-
+ 
 	@Test
-	public void testAnhadeVenta() {
-		sut.anhade(200);
+	public void testAnhadeVentaComision() {
+		sut.anhadeVentaComision(200);
 		assertTrue(sut.getTotalVentas() == 200.0);
 		
-		sut.anhade(300);
+		sut.anhadeVentaComision(300);
 		assertTrue(sut.getTotalVentas() == 500.0);	
 		
-		sut.anhade(0);
+		sut.anhadeVentaComision(0);
 		assertTrue(sut.getTotalVentas() == 500.0);
 		
 	}
+	
 	
 	@Test
 	public void testEquals() {

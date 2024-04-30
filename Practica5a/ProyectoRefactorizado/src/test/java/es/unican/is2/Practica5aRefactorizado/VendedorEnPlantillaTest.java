@@ -35,20 +35,20 @@ public class VendedorEnPlantillaTest {
 	}
 
 	@Test
-	public void testAnhadeVenta() {
+	public void testAnhadeVentaComision() {
 	
-		sutJunior.anhade(200);
+		sutJunior.anhadeVentaComision(200);
 		assertEquals(sutJunior.getTotalVentas(), 200, 0);
-		sutJunior.anhade(300);
+		sutJunior.anhadeVentaComision(300);
 		assertEquals(sutJunior.getTotalVentas(), 500, 0);
-		sutJunior.anhade(0);
+		sutJunior.anhadeVentaComision(0);
 		assertEquals(sutJunior.getTotalVentas(), 500, 0);
 		
-		sutSenior.anhade(300);
+		sutSenior.anhadeVentaComision(300);
 		assertEquals(sutSenior.getTotalVentas(), 300, 0);
-		sutSenior.anhade(300);
+		sutSenior.anhadeVentaComision(300);
 		assertEquals(sutSenior.getTotalVentas(), 600, 0);
-		sutSenior.anhade(0);
+		sutSenior.anhadeVentaComision(0);
 		assertEquals(sutSenior.getTotalVentas(), 600, 0);
 		
 	}
