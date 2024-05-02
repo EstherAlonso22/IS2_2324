@@ -1,4 +1,4 @@
-package es.unican.is2.Practica5a;
+package es.unican.is2.Practica5bRefactorizado;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -28,7 +28,7 @@ public class GestionComisiones {
 		List<Vendedor> resultado;
 		String msj;
 
-		// crea la tienda
+		//IMP: Tener datosTienda.txt en esa direccion / cambiar la direccion
 		Tienda tienda = new Tienda("C:\\temp\\datosTienda.txt");
 
 		// crea la ventana de menu

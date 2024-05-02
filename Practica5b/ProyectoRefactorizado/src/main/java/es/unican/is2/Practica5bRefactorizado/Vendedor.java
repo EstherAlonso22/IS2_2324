@@ -1,4 +1,4 @@
-package es.unican.is2.Practica5aRefactorizado;
+package es.unican.is2.Practica5bRefactorizado;
 /**
  * Vendedor de la tienda. 
  * Por cada vendedor se almacenan sus datos personales 

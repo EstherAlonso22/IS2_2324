@@ -1,4 +1,4 @@
-package es.unican.is2.Practica5a;
+package es.unican.is2.Practica5b;
 public class vendedorEnPracticas extends Vendedor {
 	
 	private String dni;

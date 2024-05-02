@@ -1,4 +1,4 @@
-package es.unican.is2.Practica5aRefactorizado;
+package es.unican.is2.Practica5bRefactorizado;
 public class VendedorEnPracticas extends Vendedor {
 		
 	/**

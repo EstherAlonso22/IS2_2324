@@ -1,4 +1,4 @@
-package es.unican.is2.Practica5a;
+package es.unican.is2.Practica5b;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;

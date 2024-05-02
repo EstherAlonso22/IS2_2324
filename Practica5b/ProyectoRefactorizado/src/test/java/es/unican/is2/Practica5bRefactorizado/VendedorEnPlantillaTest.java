@@ -1,4 +1,4 @@
-package es.unican.is2.Practica5aRefactorizado;
+package es.unican.is2.Practica5bRefactorizado;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -6,6 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import es.unican.is2.Practica5bRefactorizado.VendedorEnPlantilla;
+import es.unican.is2.Practica5bRefactorizado.VendedorJunior;
+import es.unican.is2.Practica5bRefactorizado.VendedorSenior;
 
 
 

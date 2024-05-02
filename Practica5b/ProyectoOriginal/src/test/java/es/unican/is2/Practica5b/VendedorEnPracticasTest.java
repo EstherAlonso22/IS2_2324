@@ -1,4 +1,4 @@
-package es.unican.is2.Practica5aRefactorizado;
+package es.unican.is2.Practica5b;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -6,16 +6,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import es.unican.is2.Practica5aRefactorizado.VendedorEnPracticas;
+import es.unican.is2.Practica5b.vendedorEnPracticas;
 
 
 public class VendedorEnPracticasTest {
 	
-	private static VendedorEnPracticas sut;
+	private static vendedorEnPracticas sut;
 
 	@BeforeEach
 	public void setUp(){
-		sut = new VendedorEnPracticas("Ana", "1", "11111111A");
+		sut = new vendedorEnPracticas("Ana", "1", "11111111A");
 	}
 	
 	@Test
@@ -50,26 +50,25 @@ public class VendedorEnPracticasTest {
 		sut.setC(0);
 		assertTrue(sut.getC()==0.0);
 	}
- 
+
 	@Test
-	public void testAnhadeVentaComision() {
-		sut.anhadeVentaComision(200);
+	public void testAnhadeVenta() {
+		sut.anhade(200);
 		assertTrue(sut.getTotalVentas() == 200.0);
 		
-		sut.anhadeVentaComision(300);
+		sut.anhade(300);
 		assertTrue(sut.getTotalVentas() == 500.0);	
 		
-		sut.anhadeVentaComision(0);
+		sut.anhade(0);
 		assertTrue(sut.getTotalVentas() == 500.0);
 		
 	}
 	
-	
 	@Test
 	public void testEquals() {
-		VendedorEnPracticas igual = new VendedorEnPracticas("Ana", "1", "11111111A");
-		VendedorEnPracticas distintoId = new VendedorEnPracticas("Ana", "2", "11111111A");
-		VendedorEnPracticas distintoNombre = new VendedorEnPracticas("Pepe", "1", "222222222A");
+		vendedorEnPracticas igual = new vendedorEnPracticas("Ana", "1", "11111111A");
+		vendedorEnPracticas distintoId = new vendedorEnPracticas("Ana", "2", "11111111A");
+		vendedorEnPracticas distintoNombre = new vendedorEnPracticas("Pepe", "1", "222222222A");
 		
 		assertTrue(sut.equals(igual));
 		assertFalse(sut.equals(distintoId));

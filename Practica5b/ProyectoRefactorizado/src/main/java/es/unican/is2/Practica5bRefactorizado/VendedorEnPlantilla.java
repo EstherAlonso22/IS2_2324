@@ -1,4 +1,4 @@
-package es.unican.is2.Practica5aRefactorizado;
+package es.unican.is2.Practica5bRefactorizado;
 public abstract class VendedorEnPlantilla extends Vendedor {
 	/**
 	 * Retorna un nuevo vendedor en plantilla del tipo que se indica
