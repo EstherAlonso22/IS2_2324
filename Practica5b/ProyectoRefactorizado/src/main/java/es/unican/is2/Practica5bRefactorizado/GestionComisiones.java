@@ -58,6 +58,7 @@ public class GestionComisiones {
 				
 			default: 
 				mensaje("ERROR", "Error al seleccionar una opcion");
+				break;
 			}
 		}
 	}

@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import es.unican.is2.Practica5b.vendedorEnPracticas;
 
 
 public class VendedorEnPracticasTest {
