@@ -20,14 +20,6 @@ public class GestionComisiones {
 		// opciones del menu
 		final int NUEVA_VENTA = 0, VENDEDOR_DEL_MES = 1, VENDEDORES = 2;
 
-		// variables auxiliares
-		String dni;
-		Lectura lect;
-
-		List<Vendedor> vendedores;
-		List<Vendedor> resultado;
-		String msj;
-
 		//IMP: Tener datosTienda.txt en esa direccion / cambiar la direccion
 		Tienda tienda = new Tienda("C:\\temp\\datosTienda.txt");
 
@@ -37,9 +29,10 @@ public class GestionComisiones {
 		menu.insertaOpcion("Vendedor del mes", VENDEDOR_DEL_MES);
 		menu.insertaOpcion("Vendedores por ventas", VENDEDORES);
 		int opcion;
-
+		boolean continuar = true;
+		
 		// lazo de espera de comandos del usuario
-		while (true) { 
+		while (continuar) { 
 			opcion = menu.leeOpcion();
 
 			// realiza las acciones dependiendo de la opcion elegida
@@ -58,6 +51,9 @@ public class GestionComisiones {
 				
 			default: 
 				mensaje("ERROR", "Error al seleccionar una opcion");
+				continuar = false;
+				menu.cierra();
+				break;
 			}
 		}
 	}
